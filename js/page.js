@@ -174,8 +174,9 @@ function gridLayoutExample(divName, alignment) {
           // when the user selects a new aspect ratio
           lastTime = new Date().getTime();
           setTimeout(startPushing(lastTime), duration);
+          return;
+         gridLayout.aspect(.2);
 
-         /*
                   rectG.selectAll('.grid-rect')
                   .data(gridLayout([1,2,3,4,5,6,7,8,9,10,11,12,13]))
                   .enter()
@@ -185,5 +186,4 @@ function gridLayoutExample(divName, alignment) {
                   .attr('y', function(d) { return d.pos.y; })
                   .attr('width', function(d) { return d.pos.width; })
                   .attr('height', function(d) { return d.pos.height; });
-                  */
 }

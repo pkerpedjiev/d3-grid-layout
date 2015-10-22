@@ -56,21 +56,25 @@ d3.layout.grid = function() {
         console.log('totalAreaHorizontal:', totalAreaHorizontal);
         console.log('totalAreaVertical:', totalAreaVertical);
 
+        var currentAlignment;
+
         if (alignment == 'best') {
             if (totalAreaHorizontal > totalAreaVertical) {
-                alignment = 'horizontal';
+                currentAlignment = 'horizontal';
             } else {
-                alignment = 'vertical';
+                currentAlignment = 'vertical';
             }
+        } else {
+            currentAlignment = 'alignment';
         }
 
-        if (alignment == 'vertical') {
+        if (currentAlignment == 'vertical') {
             nH = verticalnH;
             nW = verticalnW;
 
             iH = verticaliH;
             iW = verticaliW;
-        } else if (alignment == 'horizontal') {
+        } else if (currentAlignment == 'horizontal') {
             nH = horizontalnH;
             nW = horizontalnW;
 
@@ -78,7 +82,7 @@ d3.layout.grid = function() {
             iW = horizontaliW;
         }
 
-        nW = Math.floor(widthTotal / iW);
+        nW = Math.floor(0.005 + widthTotal / iW); //rounding errors
         console.log('alignment', alignment, 'nW:', nW);
 
         return d.map(function(d1, i) {
